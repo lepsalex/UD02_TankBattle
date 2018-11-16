@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// © Alexandru Lepsa 2018
 
 #include "Tank.h"
 
@@ -29,5 +29,9 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void ATank::AimAt(FVector HitLocation) const {
+	UE_LOG(LogTemp, Warning, TEXT("%s - aiming at: %s"), *GetName(), *HitLocation.ToString());
 }
 

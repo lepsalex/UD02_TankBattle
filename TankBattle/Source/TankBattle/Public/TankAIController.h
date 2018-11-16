@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// © Alexandru Lepsa 2018
 
 #pragma once
 
@@ -14,8 +14,13 @@ UCLASS()
 class TANKBATTLE_API ATankAIController : public AAIController {
 	GENERATED_BODY()
 
-public:
-	ATank* GetControlledTank() const;
-
+private:
 	void BeginPlay() override;
+
+	void Tick(float DeltaTime) override;
+
+	ATank* GetControlledTank() const;
+	ATank* GetPlayerTank() const;
+
+	void AimTowardsPlayer() const;
 };
