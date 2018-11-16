@@ -4,9 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "TankAimingComponent.h"
 #include "Tank.generated.h"
 
+class UTankAimingComponent;
 class UTankBarrel;
 
 UCLASS()
@@ -25,12 +25,6 @@ class TANKBATTLE_API ATank : public APawn {
   private:
     // Sets default values for this pawn's properties
     ATank();
-
-    // Called when the game starts or when spawned
-    virtual void BeginPlay() override;
-
-    // Called every frame
-    virtual void Tick(float DeltaTime) override;
 
     UPROPERTY(EditAnywhere, Category = Firing)
     float LaunchSpeed = 100000.f; // todo: find sensible default
