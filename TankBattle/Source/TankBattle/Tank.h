@@ -7,6 +7,8 @@
 #include "TankAimingComponent.h"
 #include "Tank.generated.h"
 
+class UTankBarrel;
+
 UCLASS()
 class TANKBATTLE_API ATank : public APawn {
     GENERATED_BODY()
@@ -15,7 +17,7 @@ class TANKBATTLE_API ATank : public APawn {
     void AimAt(FVector HitLocation) const;
 
     UFUNCTION(BlueprintCallable)
-    void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+    void SetBarrelReference(UTankBarrel* BarrelToSet);
 
   protected:
     UTankAimingComponent* TankAimingComponent = nullptr;
