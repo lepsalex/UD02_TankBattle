@@ -8,27 +8,32 @@
 #include "Tank.generated.h"
 
 UCLASS()
-class TANKBATTLE_API ATank : public APawn
-{
-	GENERATED_BODY()
+class TANKBATTLE_API ATank : public APawn {
+    GENERATED_BODY()
 
-public:
-	void AimAt(FVector HitLocation) const;
+  public:
+    void AimAt(FVector HitLocation) const;
 
-protected:
-	UTankAimingComponent* TankAimingComponent = nullptr;
+    UFUNCTION(BlueprintCallable)
+    void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
 
-private:	
-	// Sets default values for this pawn's properties
-	ATank();
+  protected:
+    UTankAimingComponent* TankAimingComponent = nullptr;
 
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+  private:
+    // Sets default values for this pawn's properties
+    ATank();
 
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+    // Called every frame
+    virtual void Tick(float DeltaTime) override;
+
+    UPROPERTY(EditAnywhere, Category = Firing)
+    float LaunchSpeed = 100000.f; // todo: find sensible default
+
+    // Called to bind functionality to input
+    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 };
