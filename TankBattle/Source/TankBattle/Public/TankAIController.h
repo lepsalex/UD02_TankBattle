@@ -18,5 +18,5 @@ class TANKBATTLE_API ATankAIController : public AAIController {
     void Tick(float DeltaTime) override;
 
     UPROPERTY(EditDefaultsOnly, Category = Movement)
-    float MoveAcceptanceRadius = 3000;
+    float MoveAcceptanceRadius = 30;
 };
