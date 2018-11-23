@@ -13,10 +13,10 @@ class TANKBATTLE_API ATankPlayerController : public APlayerController {
     GENERATED_BODY()
 
   protected:
-    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = ScreenAimingPos)
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "ScreenAimingPos")
     float AimX = 0.5f;
 
-    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = ScreenAimingPos)
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "ScreenAimingPos")
     float AimY = 0.3333f;
 
     UPROPERTY(EditDefaultsOnly)
