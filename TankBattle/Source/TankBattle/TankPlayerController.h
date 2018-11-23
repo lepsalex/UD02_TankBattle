@@ -13,6 +13,9 @@ class TANKBATTLE_API ATankPlayerController : public APlayerController {
     GENERATED_BODY()
 
   protected:
+    UFUNCTION(BlueprintCallable, Category = "Setup")
+    ATank * GetControlledTank() const;
+
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "ScreenAimingPos")
     float AimX = 0.5f;
 
@@ -26,8 +29,6 @@ class TANKBATTLE_API ATankPlayerController : public APlayerController {
     void BeginPlay() override;
 
     void Tick(float DeltaTime) override;
-
-    ATank* GetControlledTank() const;
 
     void AimTowardsCrosshair() const;
 
