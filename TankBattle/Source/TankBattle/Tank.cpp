@@ -13,14 +13,16 @@ ATank::ATank() {
 }
 
 void ATank::AimAt(FVector HitLocation) const {
-    if (TankAimingComponent) {
-        TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
-    }
+    if (!ensure(TankAimingComponent)) { return; }
+
+    TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
 void ATank::Fire() {
+    if (!ensure(TankAimingComponent)) { return; }
+
     bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
-    if (TankAimingComponent && isReloaded) {
+    if (isReloaded) {
         UTankBarrel* Barrel = TankAimingComponent->GetBarrel();
         AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(
                                       ProjectileBlueprint,
@@ -32,8 +34,4 @@ void ATank::Fire() {
 
         LastFireTime = FPlatformTime::Seconds();
     }
-}
-
-void ATank::SetAimingComponent(UTankAimingComponent* TankAimingComponentToSet) {
-    TankAimingComponent = TankAimingComponentToSet;
 }

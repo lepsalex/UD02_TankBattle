@@ -21,6 +21,9 @@ class TANKBATTLE_API ATank : public APawn {
     UFUNCTION(BlueprintCallable)
     void Fire();
 
+  protected:
+    UTankAimingComponent* TankAimingComponent = nullptr;
+
   private:
     // Sets default values for this pawn's properties
     ATank();
