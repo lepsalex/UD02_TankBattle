@@ -12,6 +12,12 @@ ATank::ATank() {
     PrimaryActorTick.bCanEverTick = false;
 }
 
+void ATank::BeginPlay() {
+    Super::BeginPlay();
+
+    TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
+}
+
 void ATank::AimAt(FVector HitLocation) const {
     if (!ensure(TankAimingComponent)) { return; }
 

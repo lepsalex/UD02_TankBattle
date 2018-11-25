@@ -28,6 +28,8 @@ class TANKBATTLE_API ATank : public APawn {
     // Sets default values for this pawn's properties
     ATank();
 
+    void BeginPlay() override;
+
     UPROPERTY(EditDefaultsOnly, Category = "Setup")
     TSubclassOf<AProjectile> ProjectileBlueprint;
 
