@@ -20,6 +20,5 @@ void ATankAIController::Tick(float DeltaTime) {
 
     MoveToActor(PlayerTank, MoveAcceptanceRadius);
     AimingComponent->AimAt(PlayerTank->GetActorLocation());
-
-    //ControllerdTank->Fire();
+    AimingComponent->Fire();
 }
