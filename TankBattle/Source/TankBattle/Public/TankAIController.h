@@ -7,6 +7,7 @@
 #include "TankAIController.generated.h"
 
 class ATank;
+class UTankAimingComponent;
 
 UCLASS()
 class TANKBATTLE_API ATankAIController : public AAIController {
@@ -16,6 +17,8 @@ class TANKBATTLE_API ATankAIController : public AAIController {
     void BeginPlay() override;
 
     void Tick(float DeltaTime) override;
+
+    UTankAimingComponent* AimingComponent = nullptr;
 
     UPROPERTY(EditDefaultsOnly, Category = "Movement")
     float MoveAcceptanceRadius = 30;

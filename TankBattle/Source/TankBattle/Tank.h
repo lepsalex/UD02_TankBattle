@@ -6,7 +6,6 @@
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
-class UTankAimingComponent;
 class UTankBarrel;
 class UTankTurret;
 class AProjectile;
@@ -21,14 +20,9 @@ class TANKBATTLE_API ATank : public APawn {
     UFUNCTION(BlueprintCallable)
     void Fire();
 
-  protected:
-    UTankAimingComponent* TankAimingComponent = nullptr;
-
   private:
     // Sets default values for this pawn's properties
     ATank();
-
-    void BeginPlay() override;
 
     UPROPERTY(EditDefaultsOnly, Category = "Setup")
     TSubclassOf<AProjectile> ProjectileBlueprint;

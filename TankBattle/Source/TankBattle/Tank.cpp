@@ -3,7 +3,6 @@
 #include "Tank.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
-#include "TankAimingComponent.h"
 #include "Engine/World.h"
 
 // Sets default values
@@ -12,24 +11,11 @@ ATank::ATank() {
     PrimaryActorTick.bCanEverTick = false;
 }
 
-void ATank::BeginPlay() {
-    Super::BeginPlay();
-
-    TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
-}
-
-void ATank::AimAt(FVector HitLocation) const {
-    if (!ensure(TankAimingComponent)) { return; }
-
-    TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
-}
-
 void ATank::Fire() {
-    if (!ensure(TankAimingComponent)) { return; }
 
     bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
     if (isReloaded) {
-        UTankBarrel* Barrel = TankAimingComponent->GetBarrel();
+        UTankBarrel* Barrel = FindComponentByClass<UTankBarrel>();
         AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(
                                       ProjectileBlueprint,
                                       Barrel->GetSocketLocation(FName("Projectile")),
