@@ -27,9 +27,9 @@ class TANKBATTLE_API ATankPlayerController : public APlayerController {
     float LineTraceRange = 10 * 100000.f; // 10km
 
   private:
-    void BeginPlay() override;
+    virtual void BeginPlay() override;
 
-    void Tick(float DeltaTime) override;
+    virtual void Tick(float DeltaTime) override;
 
     void AimTowardsCrosshair() const;
 

@@ -13,7 +13,7 @@ class TANKBATTLE_API ATankAIController : public AAIController {
     GENERATED_BODY()
 
   private:
-    void BeginPlay() override;
+    virtual void BeginPlay() override;
 
     void Tick(float DeltaTime) override;
 
