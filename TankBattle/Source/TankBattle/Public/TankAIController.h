@@ -14,7 +14,7 @@ class TANKBATTLE_API ATankAIController : public AAIController {
 
   protected:
     UPROPERTY(EditDefaultsOnly, Category = "Setup")
-    float MoveAcceptanceRadius = 3000;
+    float MoveAcceptanceRadius = 8000;
 
   private:
     virtual void BeginPlay() override;
