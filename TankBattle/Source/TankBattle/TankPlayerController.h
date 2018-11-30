@@ -12,6 +12,10 @@ UCLASS()
 class TANKBATTLE_API ATankPlayerController : public APlayerController {
     GENERATED_BODY()
 
+  public:
+    UFUNCTION()
+    void OnTankDeath();
+
   protected:
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
@@ -30,6 +34,8 @@ class TANKBATTLE_API ATankPlayerController : public APlayerController {
     virtual void BeginPlay() override;
 
     virtual void Tick(float DeltaTime) override;
+
+    virtual void SetPawn(APawn* InPawn) override;
 
     void AimTowardsCrosshair() const;
 

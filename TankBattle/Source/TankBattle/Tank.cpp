@@ -9,6 +9,11 @@ ATank::ATank() {
     PrimaryActorTick.bCanEverTick = false;
 }
 
+void ATank::BeginPlay() {
+    Super::BeginPlay();
+    CurrentHitPoints = StartingHitPoints;
+}
+
 float ATank::GetHealthPercent() const {
     return (float)CurrentHitPoints / (float)StartingHitPoints;
 }
@@ -18,6 +23,10 @@ float ATank::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, ACo
     int32 DamageToApply = FMath::Clamp(DamagePoints, 0, CurrentHitPoints);
 
     CurrentHitPoints -= DamageToApply;
+
+    if (CurrentHitPoints == 0) {
+        OnTankDeath.Broadcast();
+    }
 
     return DamageToApply;
 }

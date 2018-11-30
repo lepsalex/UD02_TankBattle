@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTankDelegate);
+
 UCLASS()
 class TANKBATTLE_API ATank : public APawn {
     GENERATED_BODY()
@@ -19,14 +21,18 @@ class TANKBATTLE_API ATank : public APawn {
     UFUNCTION(BlueprintPure, Category = "Hitpoints")
     float GetHealthPercent() const;
 
+    FTankDelegate OnTankDeath;
+
 
   private:
     // Sets default values for this pawn's properties
     ATank();
 
-    UPROPERTY(EditDefaultsOnly, Category = "Setup")
+    virtual void BeginPlay() override;
+
+    UPROPERTY(EditAnywhere, Category = "Setup")
     int32 StartingHitPoints = 50;
 
     UPROPERTY(VisibleAnywhere, Category = "Hitpoints")
-    int32 CurrentHitPoints = 50;
+    int32 CurrentHitPoints;
 };
